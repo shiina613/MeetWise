@@ -1,0 +1,94 @@
+logo {
+    margin-right: 290px;
+    margin-left: 25px;
+}
+
+notice {
+    margin-right: 50px;
+}
+
+meet {
+    margin-right: 330px;
+}
+
+home,
+calendar,
+document {
+    margin-right: 120px;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+body {
+    background-image: url(img/background.jpg);
+}
+
+a:link {
+    text-decoration: none;
+    text-color: grey;
+}
+
+#content {
+    margin: 60px;
+}
+
+header {
+    position: relative;
+    border-style: outset;
+    background-color: rgb(176, 174, 170, 0.2);
+    padding: 10px;
+    margin-bottom: 80px;
+}
+
+header form {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+}
+
+
+.container {
+    height: 80px;
+    width: 600px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    float: left;
+    margin-right: 50px;
+
+}
+
+button {
+    border: none;
+}
+
+#show_box {
+    width: 95%;
+    height: 500px;
+    margin: auto;
+    background-image: url(/img/background.jpg);
+}
+
+#fileTable {
+    width: 95%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#fileTable th,
+#fileTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#fileTable th {
+    background-color: #f2f2f2;
+}

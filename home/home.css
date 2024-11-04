@@ -1,0 +1,62 @@
+logo {
+    margin-right: 330px;
+    margin-left: 25px;
+}
+
+notice {
+    margin-right: 70px;
+}
+
+meet {
+    margin-right: 330px;
+}
+
+home,
+calendar,
+document {
+    margin-right: 120px;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+body {
+    background-image: url(/img/background.jpg);
+}
+
+a:link {
+    text-decoration: none;
+    text-color: grey;
+}
+
+#content {
+    margin: 60px;
+    display: flex;
+}
+
+#content h1 {
+    font-size: 70px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    flex: 65;
+}
+
+#image {
+    flex: 35;
+}
+
+#image img {
+    width: 400px;
+    height: 400px;
+}
+
+#support {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+}

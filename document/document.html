@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="document.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <logo>
+            <a href="/home/home.html">
+                <img src="/img/logo.jpg" alt="home" width="40" height="40" />
+            </a>
+
+        </logo>
+        <home>
+            <a href="/home/home.html">
+                Home
+            </a>
+        </home>
+        <calendar>
+            <a href="/calendar/calendar.html">
+                Calendar
+            </a>
+        </calendar>
+        <document>
+            <a href="/document/document.html">
+                Document
+            </a>
+        </document>
+        <meet>
+            <a href="/meet/meet.html">
+                Meet
+            </a>
+        </meet>
+        <notice>
+            Notice
+        </notice>
+        <information>
+            Account
+        </information>
+        <form action="" method="post" enctype="multipart/form-data" id="form_search">
+            <input type="text" name="search" id="search" placeholder="Tìm kiếm..." size="30px">
+        </form>
+    </header>
+
+    <div id="body">
+        <div class="container">
+            <ul id="list_choice">
+                <li><button><img src="/img/all.jpg" alt="choose all"></button></li>
+                <li><button><img src="/img/kt.jpg" alt="choose khao thi"></button></li>
+                <li><button><img src="/img/at.jpg" alt="choose AT"></button></li>
+                <li><button><img src="/img/ct.jpg" alt="choose CT"></button></li>
+                <li><button><img src="/img/dt.jpg" alt="choose DT"></button></li>
+            </ul>
+            Sắp xếp :
+            <select name="order" id="order">
+                <option value="">Option</option>
+                <option value="dateincrease">Date +</option>
+                <option value="datedecrease">Date - </option>
+                <option value="az"> A -> Z </option>
+                <option value="za"> Z -> A</option>
+            </select>
+        </div>
+        <div id="show_box">
+            <h1>Danh sách Tài liệu</h1>
+            <table id="fileTable">
+                <thead>
+                    <tr>
+                        <th>Tên cuộc họp</th>
+                        <th>Thời gian</th>
+                        <th>Phòng/Khoa</th>
+                        <th>Đường dẫn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Hàng chứa thông tin tài liệu sẽ được thêm vào đây -->
+                </tbody>
+            </table>
+            <script></script>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+
+</html>
