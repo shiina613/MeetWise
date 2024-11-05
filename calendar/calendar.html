@@ -4,19 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch của tôi</title>
-    <!-- CSS của FullCalendar -->
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css' rel='stylesheet' />
+    <title>Lịch họp</title>
+    <link rel="stylesheet" href="calendar.css">
 </head>
 
 <body>
-    <h1>Lịch sự kiện</h1>
-    <div id="calendar"></div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
 
-    <!-- Thư viện JavaScript của FullCalendar -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script>
-    <!-- Script khởi tạo lịch -->
-    <script src="calendar.js" defer></script>
+            <div class="header-left">
+                <div class="logo">
+                    <img src="/MeetWise/img/logo.jpg" alt="Logo" />
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm..." />
+                </div>
+            </div>
+
+            <div class="header-mid">
+                <nav class="nav-links">
+                    <a href="/MeetWise/home/home.html">Trang Chủ</a>
+                    <a href="/MeetWise/calendar/calendar.html">Lịch họp</a>
+                    <a href="/MeetWise/document/document.html">Tài liệu</a>
+                    <a href="/MeetWise/meet/meet.html">Cuộc họp</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <nav class="nav-links">
+                    <a href="#home">Thông báo</a>
+                    <a href="#features">Tài khoản</a>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="body-container">
+
+        <div class="calendar-container">
+            <h1>Lịch họp của tôi:</h1>
+
+            <iframe
+                src="https://calendar.google.com/calendar/embed?src=quangtungnguyen613%40gmail.com&ctz=Asia%2FHo_Chi_Minh"
+                style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="detail">
+            <h2>Chi tiết: </h2>
+        </div>
+    </div>
+
+    <footer>
+        <a href="#">Need support?</a>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

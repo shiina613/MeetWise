@@ -10,68 +10,68 @@
 
 <body>
     <header>
-        <logo>
-            <a href="/home/home.html">
-                <img src="/img/logo.jpg" alt="home" width="40" height="40" />
-            </a>
-        </logo>
-        <div>
-            <home>
-                <a href="home.html">
-                    Home
-                </a>
-            </home>
-            <calendar>
-                <a href="calendar.html">
-                    Calendar
-                </a>
-            </calendar>
-            <document>
-                <a href="document.html">
-                    Document
-                </a>
-            </document>
-            <meet>
-                <a href="meet.html">
-                    Meet
-                </a>
-            </meet>
-        </div>
-        <div>
-            <notice>
-                Notice
-            </notice>
-            <information>
-                Account
-            </information>
+        <div class="header-container">
+
+            <div class="header-left">
+                <div class="logo">
+                    <img src="/MeetWise/img/logo.jpg" alt="Logo" />
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm..." />
+                </div>
+            </div>
+
+            <div class="header-mid">
+                <nav class="nav-links">
+                    <a href="/MeetWise/home/home.html">Trang Chủ</a>
+                    <a href="/MeetWise/calendar/calendar.html">Lịch họp</a>
+                    <a href="/MeetWise/document/document.html">Tài liệu</a>
+                    <a href="/MeetWise/meet/meet.html">Cuộc họp</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <nav class="nav-links">
+                    <a href="#home">Thông báo</a>
+                    <a href="#features">Tài khoản</a>
+                </nav>
+            </div>
+
         </div>
     </header>
 
     <div class="container">
-        <div id="logo-or-sth">
-            <img src="/img/background.jpg" alt="">
-        </div>
+
+        <img src="/MeetWise/img/anh-dang-hop.jpg" alt="anh-dang-hop">
 
         <div id="tab-group">
-            <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'join')" id="defaultOpen">Tham gia cuộc họp</button>
-                <button class="tablinks" onclick="openTab(event, 'create')">Tạo cuộc họp mới</button>
-            </div>
 
             <div id="join" class="tabcontent">
                 <form action="join.php" method="POST">
+                    Nhập mã phòng họp
                     <input type="text" id="ma-goi-nho" name="ma-goi-nho" placeholder="Nhập mã phòng họp..." required>
                     <button type="submit">Tham gia</button>
+
+                    <div class="br"> </div>
+
+                    <button class="tablinks" onclick="openTab(event, 'create')">Tạo cuộc họp mới</button>
                 </form>
             </div>
 
             <div id="create" class="tabcontent">
                 <form action="create.php" method="POST">
+                    Tên cuộc họp:
                     <input type="text" id="name" name="name" placeholder="Nhập tên cuộc họp..." required>
+                    Chọn phòng họp:
+                    <input type="text" id="room" name="room" placeholder="Nhập mã phòng" required>
+                    Chọn thời gian:
+                    <input type="datetime-local" id="time" name="time" required>
+                    <button type=" submit">Tạo cuộc họp</button>
 
-                    <input type="datetime-local" id="time" name="time" placeholder="Chọn thời gian..." required>
+                    <div class="br"> </div>
 
-                    <button type=" submit">Đăng Ký</button>
+                    <button class="tablinks" onclick="openTab(event, 'join')" id="defaultOpen">Tham gia cuộc
+                        họp</button>
                 </form>
             </div>
         </div>

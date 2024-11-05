@@ -4,27 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách Tài liệu</title>
+    <title>Home MeetWise</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Danh sách Tài liệu</h1>
-    <input type="file" id="fileInput" multiple>
-    <table id="fileTable">
-        <thead>
-            <tr>
-                <th>Tên cuộc họp</th>
-                <th>Thời gian</th>
-                <th>Phòng/Khoa</th>
-                <th>Đường dẫn</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Hàng chứa thông tin tài liệu sẽ được thêm vào đây -->
-        </tbody>
-    </table>
-    <script src="app.js"></script>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+
+            <div class="header-left">
+                <div class="logo">
+                    <img src="/MeetWise/img/logo.jpg" alt="Logo" />
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm..." />
+                </div>
+            </div>
+
+            <div class="header-mid">
+                <nav class="nav-links">
+                    <a href="/MeetWise/home/home.html">Trang Chủ</a>
+                    <a href="/MeetWise/calendar/calendar.html">Lịch họp</a>
+                    <a href="/MeetWise/document/document.html">Tài liệu</a>
+                    <a href="/MeetWise/meet/meet.html">Cuộc họp</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <nav class="nav-links">
+                    <a href="#home">Thông báo</a>
+                    <a href="#features">Tài khoản</a>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="text">
+            <h1>Làm cho mọi cuộc họp dễ dàng hơn với MeetWise</h1>
+            <a href="/MeetWise/meet/meet.html">Bắt đầu ngay!</a>
+        </div>
+
+        <div class="img">
+            <img src="/MeetWise/img/anh-dang-hop.jpg" alt="anh-dang-hop" width="800px" height="600px">
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Need support?</a>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
