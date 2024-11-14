@@ -1,18 +1,18 @@
-function showMeeting() {
-    document.getElementById("meeting-box").style.display = "block";
-    document.getElementById("document-box").style.display = "none";
-    document.getElementById("employee-box").style.display = "none";
+function openTab(event, tabId) {
+    var i, tabContent, tabLinks;
+    tabContent = document.getElementsByClassName("tab-content");
+
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    tabLinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(tabId).style.display = "block";
+    event.currentTarget.className += " active";
 }
 
 
-function showDocument() {
-    document.getElementById("meeting-box").style.display = "none";
-    document.getElementById("document-box").style.display = "block";
-    document.getElementById("employee-box").style.display = "none";
-}
-
-function showEmployee() {
-    document.getElementById("meeting-box").style.display = "none";
-    document.getElementById("document-box").style.display = "none";
-    document.getElementById("employee-box").style.display = "block";
-}

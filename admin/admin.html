@@ -4,109 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home MeetWise</title>
-    <link rel="stylesheet" href="admin.css">
+    <title>Đăng nhập hoặc Đăng ký</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-
-            <div class="header-left">
-                <div class="logo">
-                    <img src="/MeetWise/img/logo.jpg" alt="Logo" />
-                </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Tìm kiếm..." />
-                </div>
-            </div>
-
-            <div class="header-mid">
-                <nav class="nav-links">
-                    <a href="/MeetWise/home/home.html">Trang Chủ</a>
-                    <a href="/MeetWise/calendar/calendar.html">Lịch họp</a>
-                    <a href="/MeetWise/document/document.html">Tài liệu</a>
-                    <a href="/MeetWise/meet/meet.html">Cuộc họp</a>
-                </nav>
-            </div>
-
-            <div class="header-right">
-                <nav class="nav-links">
-                    <a href="#home">Thông báo</a>
-                    <a href="#features">Tài khoản</a>
-                </nav>
-            </div>
-
-
-        </div>
-        </div>
-    </header>
-
-    <div class="body">
-
-        <div class="meeting-box" id="meeting-box">
-            <h1>Cuộc họp</h1>
+    <div class="container">
+        <!-- Giao diện đăng nhập -->
+        <div class="login-box" id="login-box">
+            <h1>Đăng nhập để sử dụng MeetWise</h1>
+            <form action="/login" method="POST">
+                <input type="text" placeholder="Tên đăng nhập..." name="ID_User" required>
+                <input type="password" placeholder="Mật khẩu" name="Password" required>
+                <button type="submit">Đăng nhập</button>
+            </form>
+            <a href="#" class="forgot-password" onclick="showForgotPassword()">Quên mật khẩu?</a>
             <div class="separator"></div>
-            <button class="meeting" onclick="showMeeting()">Cuộc họp</button>
-            <button class="document" onclick="showDocument()">Tài liệu</button>
-            <button class="employee" onclick="showEmployee()">Nhân viên</button>
-            <div class="show-box">
-                <table>
-                    <th>Tên cuộc họp</th>
-                    <th>Thời gian</th>
-                    <th>Chủ tịch</th>
-                    <th>Thư ký</th>
-                    <th>File transcript</th>
-                    <th> </th>
-                    <tr>
-                        <td>Cuộc họp 1</td>
-                        <td>01/01/0101</td>
-                        <td>Chủ tịch</td>
-                        <td>Thư ký</td>
-                        <td>File:/bfhdb</td>
-                    </tr>
-                    <tr>
-
-                    </tr>
-                </table>
-            </div>
+            <button class="create-account" onclick="showRegister()">Tạo tài khoản mới</button>
         </div>
 
-        <div class="document-box" id="document-box" style="display: none;">
-            <h1>Tài liệu</h1>
+        <!-- Giao diện đăng ký -->
+        <div class="register-box" id="register-box" style="display: none;">
+            <h1>Tạo tài khoản mới</h1>
+            <p>Nhanh chóng và dễ dàng.</p>
+            <form action="/register" method="POST">
+                <input type="text" placeholder="Họ và tên" name="TenNhanVien" required>
+                <input type="text" placeholder="Tên đăng nhập" name="ID_User" required>
+                <input type="password" placeholder="Mật khẩu" name="Password" required>
+                <input type="repeat_password" placeholder="Nhập lại mật khẩu" name="Repeat_Password" required>
+                <button type="submit">Đăng ký</button>
+            </form>
             <div class="separator"></div>
-            <button class="meeting" onclick="showMeeting()">Cuộc họp</button>
-            <button class="document" onclick="showDocument()">Tài liệu</button>
-            <button class="employee" onclick="showEmployee()">Nhân viên</button>
-            <div class="show-box">
-                <table>
-                    <th>Tên tài liệu</th>
-                    <th>Cuộc họp</th>
-                    <th>Thời gian tạo</th>
-                    <th>Path</th>
-                    <th></th>
-                </table>
-            </div>
+            <button class="back-to-login" onclick="showLogin()">Quay lại Đăng nhập</button>
         </div>
 
-        <div class="employee-box" id="employee-box" style="display: none;">
-            <h1>Nhân viên</h1>
+        <!-- Giao diện quên mật khẩu -->
+        <div class="forgot-password-box" id="forgot-password-box" style="display: none; ">
+            <h1>Nhập các thông tin sau để khôi phục mật khẩu</h1>
+            <form action="/forgot-password" method="POST">
+                <input type="text" placeholder="Tên đăng nhập..." name="ID_User" required>
+                <input type="text" placeholder="Email" name="Email" required>
+                <input type="text" placeholder="Số điện thoại" name="DienThoai" required>
+                <button type="submit">Xác nhân</button>
+            </form>
             <div class="separator"></div>
-            <button class="meeting" onclick="showMeeting()">Cuộc họp</button>
-            <button class="document" onclick="showDocument()">Tài liệu</button>
-            <button class="employee" onclick="showEmployee()">Nhân viên</button>
-            <div class="show-box">
-                <table>
-                    <th>STT</th>
-                    <th>Họ và tên</th>
-                    <th>Mã nhân viên</th>
-                    <th>Ngày sinh</th>
-                    <th>Số điện thoại</th>
-                    <th>Chức vụ</th>
-                    <th>Phòng ban</th>
-                    <th> </th>
-                </table>
-            </div>
+            <button class="create-account" onclick="showLogin()">Quay lại Đăng nhập</button>
         </div>
-        <script src="script.js"></script>
+
+
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
+</html>

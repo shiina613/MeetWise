@@ -41,17 +41,39 @@
         </div>
     </header>
 
-    <div class="body-container">
+    <div class="body">
 
-        <div class="calendar-container">
-            <h1>Lịch họp của tôi:</h1>
+        <div class="chooser">
+            <button>Tất cả cuộc họp</button>
+            <button>Công nghệ thông tin</button>
+            <button>An toàn thông tin</button>
+            <button>Điện tử viễn thông</button>
+            <button>Khảo thí</button>
 
-            <iframe
-                src="https://calendar.google.com/calendar/embed?src=quangtungnguyen613%40gmail.com&ctz=Asia%2FHo_Chi_Minh"
-                style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
-        <div class="detail">
-            <h2>Chi tiết: </h2>
+
+        <div class="show">
+            <select name="order" id="order">
+                <option value="">Sắp xếp theo</option>
+                <option value="dateincrease">Ngày tăng dần</option>
+                <option value="datedecrease">Ngày giảm dần</option>
+            </select>
+            <div class="show-box">
+
+                <div class="show-box-header">
+                    <div class="meeting-name">Tên cuộc họp</div>
+                    <div class="time">Thời gian</div>
+                    <div class="department">Phòng ban</div>
+                    <div class="status">Trạng thái</div>
+                    <div class="note">Ghi chú</div>
+                    <div class="joiner">_______</div>
+                </div>
+
+                <div class="meeting-box">
+
+                </div>
+            </div>
+
         </div>
     </div>
 
