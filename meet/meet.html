@@ -47,9 +47,11 @@
         <div id="tab-group">
 
             <div id="join" class="tabcontent">
-                <form action="join.php" method="POST">
+                <form action="#login" method="POST">
                     Nhập mã phòng họp
                     <input type="text" id="ma-goi-nho" name="ma-goi-nho" placeholder="Nhập mã phòng họp..." required>
+                    Nhập mật khẩu phòng họp
+                    <input type="password" id="pass" name="pass" placeholder="Nhập mật khẩu phòng họp">
                     <button type="submit">Tham gia</button>
 
                     <div class="br"> </div>
@@ -59,13 +61,28 @@
             </div>
 
             <div id="create" class="tabcontent">
-                <form action="create.php" method="POST">
+                <form id="formCreate" action="#" method="POST">
                     Tên cuộc họp:
-                    <input type="text" id="name" name="name" placeholder="Nhập tên cuộc họp..." required>
-                    Chọn phòng họp:
-                    <input type="text" id="room" name="room" placeholder="Nhập mã phòng" required>
+                    <input type="text" id="TenCuocHop" placeholder="Nhập tên cuộc họp..." required>
                     Chọn thời gian:
-                    <input type="datetime-local" id="time" name="time" required>
+                    <input type="datetime-local" id="ThoiGian" required>
+                    Phòng ban:
+                    <select id="PhongBan">
+                        <option value="">Chọn phòng ban</option>
+                        <option value="all">Toàn cục</option>
+                        <option value="attt">An toàn thông tin</option>
+                        <option value="cntt">Công nghệ thông tin</option>
+                        <option value="dtvt">Điện tử viễn thông</option>
+                        <option value="kt">Khảo thí</option>
+                    </select>
+                    Chọn phòng họp:
+                    <input type="text" id="PhongHop" placeholder="Nhập mã phòng" required>
+                    Chọn chủ tịch:
+                    <input type="text" id="ChuTich" placeholder="Nhập mã chủ tịch" required>
+                    Chọn thư ký:
+                    <input type="text" id="ThuKy" placeholder="Nhập mã thư ký" required>
+                    Mã gợi nhớ:
+                    <input type="text" id="MaGoiNho" placeholder="Nhập mã gợi nhớ" required>
                     <button type=" submit">Tạo cuộc họp</button>
 
                     <div class="br"> </div>

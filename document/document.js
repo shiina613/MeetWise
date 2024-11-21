@@ -1,3 +1,15 @@
+
+
+// fetch('/api/documents')
+//     .then(response => response.json())  // Chuyển đổi phản hồi JSON thành đối tượng JavaScript
+//     .then(data => {
+
+//         document.getElementById("demo").innerHTML = text;
+//     })
+//     .catch(error => {
+//         console.error("Có lỗi khi tải dữ liệu:", error);
+//     });
+
 function getData(callback) {
     var request = new XMLHttpRequest();
 
@@ -25,7 +37,3 @@ getData(function (error, data) {
         console.log("Dữ liệu nhận được: ", data);
     }
 })
-
-let table =
-
-    document.getElementById('table_body').innerHTML = table;
