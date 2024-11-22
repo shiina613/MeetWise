@@ -21,7 +21,7 @@ function openTab(evt, tabName) {
 // Mở tab "Tham gia" mặc định
 document.getElementById("defaultOpen").click();
 
-ocument.getElementById('formJoin').addEventListener('submit', function (event) {
+document.getElementById('formJoin').addEventListener('submit', function (event) {
     event.preventDefault(); // Ngừng form gửi đi tự động
 
     // Lấy giá trị từ form
@@ -33,7 +33,7 @@ ocument.getElementById('formJoin').addEventListener('submit', function (event) {
         password: password,
     };
 
-    fetch('#join', {
+    fetch('http://localhost:8080/meetings/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json' // Đảm bảo rằng dữ liệu được gửi dưới dạng JSON
@@ -42,7 +42,7 @@ ocument.getElementById('formJoin').addEventListener('submit', function (event) {
     })
         .then(response => response.json())
         .then(data => {
-            window.location.href = "#"; // Điều hướng sau khi đăng ký thành công
+            window.location.href = "#meeting"; // Điều hướng sau khi đăng ký thành công
         })
         .catch(error => {
             alert('Lỗi : ' + error);
