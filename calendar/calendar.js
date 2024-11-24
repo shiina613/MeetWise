@@ -1,31 +1,199 @@
-function getData(callback) {
-    var request = new XMLHttpRequest();
+fetch('http://localhost:8080/meetings')
+    .then(response => response.json())
+    .then(data => {
+        const tableBody = document.querySelector('table tbody');
+        tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+        data.forEach(meeting => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${meeting.tenCuocHop}</td>
+                <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                <td>${meeting.phongBan}</td>
+                <td>${meeting.phongHop}</td>
+                <td>${meeting.status}</td>
+                <td>${meeting.maGoiNho}</td>
+                <td>${meeting.nguoiTao}</td>
+                <td>${meeting.fileTranscript}</td>
+                <td><button>Tham gia</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    })
+    .catch(error => console.error('Error fetching meetings:', error));
 
-    request.onreadystatechange = function () {
-        if (this.readyState === 4 && request.status === 200) {
-            console.log(request);
-            const obj = JSON.parse(request.responseText);
-            callback(undefined, obj);
-        }
-
-        if (this.readyState === 4 && request.status !== 200) {
-            callback('Sth wrong', undefined);
-        }
-    }
-
-    request.open("GET", 'api'); //gọi request
-    request.send(); //chạy request
+function showCNTT() {
+    fetch('http://localhost:8080/meetings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+            data.forEach(meeting => {
+                if (meeting.phongBan === 'Công nghệ thông tin') {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${meeting.tenCuocHop}</td>
+                    <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                    <td>${meeting.phongBan}</td>
+                    <td>${meeting.phongHop}</td>
+                    <td>${meeting.status}</td>
+                    <td>${meeting.maGoiNho}</td>
+                    <td>${meeting.nguoiTao}</td>
+                    <td>${meeting.fileTranscript}</td>
+                    <td><button>Tham gia</button></td>
+                `;
+                    tableBody.appendChild(row);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching meetings:', error));
 }
 
-getData(function (error, data) {
-    if (error) {
-        alert('Lỗi: ', error);
-    }
-    else {
-        console.log("Dữ liệu nhận được: ", data);
-    }
-})
+function showATTT() {
+    fetch('http://localhost:8080/meetings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+            data.forEach(meeting => {
+                if (meeting.phongBan === 'An toàn thông tin') {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${meeting.tenCuocHop}</td>
+                    <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                    <td>${meeting.phongBan}</td>
+                    <td>${meeting.phongHop}</td>
+                    <td>${meeting.status}</td>
+                    <td>${meeting.maGoiNho}</td>
+                    <td>${meeting.nguoiTao}</td>
+                    <td>${meeting.fileTranscript}</td>
+                    <td><button>Tham gia</button></td>
+                `;
+                    tableBody.appendChild(row);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching meetings:', error));
+}
 
-let table =
+function showDTVT() {
+    fetch('http://localhost:8080/meetings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+            data.forEach(meeting => {
+                if (meeting.phongBan === 'Điện tử viễn thông') {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${meeting.tenCuocHop}</td>
+                    <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                    <td>${meeting.phongBan}</td>
+                    <td>${meeting.phongHop}</td>
+                    <td>${meeting.status}</td>
+                    <td>${meeting.maGoiNho}</td>
+                    <td>${meeting.nguoiTao}</td>
+                    <td>${meeting.fileTranscript}</td>
+                    <td><button>Tham gia</button></td>
+                `;
+                    tableBody.appendChild(row);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching meetings:', error));
+}
 
-    document.getElementById('table_body').innerHTML = table;
+
+function showPKT() {
+    fetch('http://localhost:8080/meetings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+            data.forEach(meeting => {
+                if (meeting.phongBan === 'Phòng khảo thí') {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${meeting.tenCuocHop}</td>
+                    <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                    <td>${meeting.phongBan}</td>
+                    <td>${meeting.phongHop}</td>
+                    <td>${meeting.status}</td>
+                    <td>${meeting.maGoiNho}</td>
+                    <td>${meeting.nguoiTao}</td>
+                    <td>${meeting.fileTranscript}</td>
+                    <td><button onclick="thamGia()">Tham gia</button></td>
+                `;
+                    tableBody.appendChild(row);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching meetings:', error));
+}
+
+function showCNTT() {
+    fetch('http://localhost:8080/meetings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+            data.forEach(meeting => {
+                if (meeting.phongBan === 'Công nghệ thông tin') {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${meeting.tenCuocHop}</td>
+                    <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                    <td>${meeting.phongBan}</td>
+                    <td>${meeting.phongHop}</td>
+                    <td>${meeting.status}</td>
+                    <td>${meeting.maGoiNho}</td>
+                    <td>${meeting.nguoiTao}</td>
+                    <td>${meeting.fileTranscript}</td>
+                    <td><button>Tham gia</button></td>
+                `;
+                    tableBody.appendChild(row);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching meetings:', error));
+}
+
+const orderSelect = document.getElementById('order');
+
+orderSelect.addEventListener('change', (event) => {
+    const selectedOrder = event.target.value;
+    sortEvents(selectedOrder);
+});
+
+function sortEvents(order) {
+
+    fetch('http://localhost:8080/meetings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Xóa dữ liệu cũ
+
+            if (order === 'dateincrease') {
+                data.sort((a, b) => new Date(a.thoiGianBatDau) - new Date(b.thoiGianBatDau)); // Ngày tăng dần
+            } else if (order === 'datedecrease') {
+                data.sort((a, b) => new Date(b.thoiGianBatDau) - new Date(a.thoiGianBatDau)); // Ngày giảm dần
+            }
+
+            data.forEach(meeting => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${meeting.tenCuocHop}</td>
+                <td>${new Date(meeting.thoiGianBatDau).toLocaleString()}</td>
+                <td>${meeting.phongBan}</td>
+                <td>${meeting.phongHop}</td>
+                <td>${meeting.status}</td>
+                <td>${meeting.maGoiNho}</td>
+                <td>${meeting.nguoiTao}</td>
+                <td>${meeting.fileTranscript}</td>
+                <td><button>Tham gia</button></td>
+            `;
+                tableBody.appendChild(row);
+
+            });
+        })
+        .catch(error => console.error('Error fetching meetings:', error));
+}

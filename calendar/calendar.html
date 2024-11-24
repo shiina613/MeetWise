@@ -15,7 +15,7 @@
 
             <div class="header-left">
                 <div class="logo">
-                    <img src="/MeetWise/img/logo.jpg" alt="Logo" />
+                    <img src="/img/logo.jpg" alt="Logo" />
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Tìm kiếm..." />
@@ -24,10 +24,10 @@
 
             <div class="header-mid">
                 <nav class="nav-links">
-                    <a href="/MeetWise/home/home.html">Trang Chủ</a>
-                    <a href="/MeetWise/calendar/calendar.html">Lịch họp</a>
-                    <a href="/MeetWise/document/document.html">Tài liệu</a>
-                    <a href="/MeetWise/meet/meet.html">Cuộc họp</a>
+                    <a href="/home/home.html">Trang Chủ</a>
+                    <a href="/calendar/calendar.html">Lịch họp</a>
+                    <a href="/document/document.html">Tài liệu</a>
+                    <a href="/meet/meet.html">Cuộc họp</a>
                 </nav>
             </div>
 
@@ -44,73 +44,50 @@
     <div class="body">
 
         <div class="chooser">
-            <button>Tất cả cuộc họp</button>
-            <button>Công nghệ thông tin</button>
-            <button>An toàn thông tin</button>
-            <button>Điện tử viễn thông</button>
-            <button>Khảo thí</button>
+            <button onclick="showAll()">Tất cả cuộc họp</button>
+            <button onclick="showCntt()">Công nghệ thông tin</button>
+            <button onclick="showAttt()">An toàn thông tin</button>
+            <button onclick="showDtvt()">Điện tử viễn thông</button>
+            <button onclick="showKKT()">Khảo thí</button>
 
         </div>
 
         <div class="show">
             <select name="order" id="order">
-                <option value="">Sắp xếp theo</option>
+                <option value=""><button>Sắp xếp theo</button></option>
                 <option value="dateincrease">Ngày tăng dần</option>
                 <option value="datedecrease">Ngày giảm dần</option>
             </select>
             <div class="show-box">
 
-                <!-- <div class="show-box-header"> -->
-                <!-- <div class="meeting-name">Tên cuộc họp</div>
-                    <div class="time">Thời gian</div>
-                    <div class="department">Phòng ban</div>
-                    <div class="room">Phòng họp</div>
-                    <div class="status">Trạng thái</div>
-                    <div class="code">Mã gợi nhớ</div>
-                    <div class="creator">Người tạo</div>
-                    <div class="transcript">File transcript</div>
-                    <div class="note">Ghi chú</div>
-                    <div class="joiner">_______</div> -->
                 <table>
-                    <th>
-                    <td>Tên cuộc họp</td>
-                    <td>Thời gian</td>
-                    <td>Phòng ban</td>
-                    <td>Phòng họp</td>
-                    <td>Trạng thái</td>
-                    <td>Mã gợi nhớ</td>
-                    <td>Người tạo</td>
-                    <td>File transcript</td>
-                    <td>_______</td>
-                    </th>
-
-                    <tr>
-                        <!-- <td>Tên cuộc họp</td>
-                        <td>Thời gian</td>
-                        <td>Phòng ban</td>
-                        <td>Phòng họp</td>
-                        <td>Trạng thái</td>
-                        <td>Mã gợi nhớ</td>
-                        <td>Người tạo</td>
-                        <td>File transcript</td>
-                        <td><button></button></td> -->
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Tên cuộc họp</th>
+                            <th>Thời gian</th>
+                            <th>Phòng ban</th>
+                            <th>Phòng họp</th>
+                            <th>Trạng thái</th>
+                            <th>Mã gợi nhớ</th>
+                            <th>Người tạo</th>
+                            <th>File transcript</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu sẽ được JS thêm vào đây -->
+                    </tbody>
                 </table>
-                <!-- </div> -->
 
-                <div class="meeting-box">
 
-                </div>
-            </div>
 
-        </div>
-    </div>
 
-    <footer>
-        <a href="#">Need support?</a>
-    </footer>
 
-    <script src="script.js"></script>
+
+                <footer>
+                    <a href="#">Need support?</a>
+                </footer>
+
+                <script src="calendar.js"></script>
 </body>
 
 </html>
