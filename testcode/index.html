@@ -1,63 +1,27 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập hoặc Đăng ký</title>
-    <link rel="stylesheet" href="/virtual_assistant/src/main/resources/static/css/login.css">
+    <title>Video Call</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <!-- Giao diện đăng nhập -->
-        <div class="login-box" id="login-box">
-            <h1>Đăng nhập để sử dụng MeetWise</h1>
-            <form id="loginForm" action="#" method="POST">
-                <input type="text" placeholder="Tên đăng nhập..." id="ID_User" required>
-                <input type="password" placeholder="Mật khẩu" id="Password" required>
-                <button type="submit">Đăng nhập</button>
-            </form>
-            <a href="#" class="forgot-password" onclick="showForgotPassword()">Quên mật khẩu?</a>
-            <div class="separator"></div>
-            <button class="create-account" onclick="showRegister()">Tạo tài khoản mới</button>
+        <h1>Video Call with Friends</h1>
+        <div class="videos">
+            <video id="localVideo" autoplay muted></video>
+            <video id="remoteVideo" autoplay></video>
         </div>
-
-        <!-- Giao diện đăng ký -->
-        <div class="register-box" id="register-box" style="display: none;">
-            <h1>Tạo tài khoản mới</h1>
-            <p>Nhanh chóng và dễ dàng.</p>
-            <form id="registerForm" action="#" method="POST">
-
-                <input type="text" placeholder="Tên đăng nhập" id="username" required>
-                <input type="text" placeholder="Mã nhân viên" id="maNhanVien" required>
-                <input type="password" placeholder="Mật khẩu" id="password" required>
-                <input type="password" placeholder="Nhập lại mật khẩu" id="repeatPassword" required>
-                <button type="submit">Đăng ký</button>
-            </form>
-
-            <div class="separator"></div>
-            <button class="back-to-login" onclick="showLogin()">Quay lại Đăng nhập</button>
+        <div class="controls">
+            <button id="startCall">Start Call</button>
+            <button id="endCall">End Call</button>
+            <button id="toggleMic">Toggle Mic</button>
         </div>
-
-        <!-- Giao diện quên mật khẩu -->
-        <div class="forgot-password-box" id="forgot-password-box" style="display: none; ">
-            <h1>Nhập các thông tin sau để khôi phục mật khẩu</h1>
-            <form id="forgotPasswordForm" action="/forgot-password" method="POST">
-                <input type="text" placeholder="Tên đăng nhập..." id="ID_User" required>
-                <input type="text" placeholder="Email" id="Email" required>
-                <input type="text" placeholder="Số điện thoại" id="DienThoai" required>
-                <button type="submit">Xác nhân</button>
-            </form>
-            <div class="separator"></div>
-            <button class="create-account" onclick="showLogin()">Quay lại Đăng nhập</button>
-        </div>
-
-
-
     </div>
-
-    <script src="/virtual_assistant/src/main/resources/static/js/login.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,123 +1,82 @@
-function showRegister() {
-    document.getElementById("login-box").style.display = "none";
-    document.getElementById("register-box").style.display = "block";
-    document.getElementById("forgot-password-box").style.display = "none";
+const localVideo = document.getElementById('localVideo');
+const remoteVideo = document.getElementById('remoteVideo');
+const startCallButton = document.getElementById('startCall');
+const endCallButton = document.getElementById('endCall');
+const toggleMicButton = document.getElementById('toggleMic');
+
+let localStream;
+let peerConnection;
+let micEnabled = true;
+
+const socket = new WebSocket('ws://localhost:8080');
+const iceServers = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+// Lấy video từ camera
+navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    .then((stream) => {
+        localStream = stream;
+        localVideo.srcObject = stream;
+    })
+    .catch((error) => console.error('Error accessing media devices.', error));
+
+// Tạo kết nối WebRTC
+function createPeerConnection() {
+    const pc = new RTCPeerConnection(iceServers);
+
+    localStream.getTracks().forEach((track) => pc.addTrack(track, localStream));
+
+    pc.ontrack = (event) => {
+        remoteVideo.srcObject = event.streams[0];
+    };
+
+    pc.onicecandidate = (event) => {
+        if (event.candidate) {
+            socket.send(JSON.stringify({ candidate: event.candidate }));
+        }
+    };
+
+    return pc;
 }
 
-function showLogin() {
-    document.getElementById("register-box").style.display = "none";
-    document.getElementById("login-box").style.display = "block";
-    document.getElementById("forgot-password-box").style.display = "none";
-}
+// Xử lý tin nhắn từ signaling server
+socket.onmessage = async (message) => {
+    const data = JSON.parse(message.data);
 
-function showForgotPassword() {
-    document.getElementById("login-box").style.display = "none";
-    document.getElementById("register-box").style.display = "none";
-    document.getElementById("forgot-password-box").style.display = "block";
-}
-
-
-
-
-document.getElementById('registerForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Ngừng form gửi đi tự động
-
-    // Lấy giá trị từ form
-    const username = document.getElementById('username').value;
-    const maNhanVien = document.getElementById('maNhanVien').value;
-    const password = document.getElementById('password').value;
-    const repeatPassword = document.getElementById('repeatPassword').value;
-
-    // Kiểm tra mật khẩu
-    if (password !== repeatPassword) {
-        alert('Mật khẩu không khớp!');
-        return;
+    if (data.offer) {
+        peerConnection = createPeerConnection();
+        await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
+        const answer = await peerConnection.createAnswer();
+        await peerConnection.setLocalDescription(answer);
+        socket.send(JSON.stringify({ answer }));
+    } else if (data.answer) {
+        await peerConnection.setRemoteDescription(new RTCSessionDescription(data.answer));
+    } else if (data.candidate) {
+        await peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate));
     }
+};
 
-    // Gửi dữ liệu đăng ký tới backend
-    const registerData = {
-        username: username,
-        maNhanVien: maNhanVien,
-        password: password,
-        repeatPassword: repeatPassword
-    };
-
-    fetch('#register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' // Đảm bảo rằng dữ liệu được gửi dưới dạng JSON
-        },
-        body: JSON.stringify(registerData) // Chuyển đổi đối tượng JavaScript thành chuỗi JSON
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert('Đăng ký thành công');
-            window.location.href = "/login"; // Điều hướng sau khi đăng ký thành công
-        })
-        .catch(error => {
-            alert('Lỗi đăng ký: ' + error);
-        });
+// Nút bắt đầu cuộc gọi
+startCallButton.addEventListener('click', async () => {
+    peerConnection = createPeerConnection();
+    const offer = await peerConnection.createOffer();
+    await peerConnection.setLocalDescription(offer);
+    socket.send(JSON.stringify({ offer }));
+    startCallButton.disabled = true;
+    endCallButton.disabled = false;
 });
 
-document.getElementById('loginForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Ngừng form gửi đi tự động
-
-    // Lấy giá trị từ form
-    const ID_User = document.getElementById('ID_User_login').value;
-    const Password = document.getElementById('Password_login').value;
-
-    // Gửi dữ liệu đăng ký tới backend
-    const loginData = {
-        ID_User: ID_User,
-        Password: Password,
-    };
-
-    fetch('/accounts/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' // Đảm bảo rằng dữ liệu được gửi dưới dạng JSON
-        },
-        body: JSON.stringify(loginData) // Chuyển đổi đối tượng JavaScript thành chuỗi JSON
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert('Đăng nhập thành công');
-            window.location.href = "#home"; // Điều hướng sau khi đăng ký thành công
-        })
-        .catch(error => {
-            alert('Lỗi đăng nhập: ' + error);
-        });
+// Nút kết thúc cuộc gọi
+endCallButton.addEventListener('click', () => {
+    peerConnection.close();
+    peerConnection = null;
+    remoteVideo.srcObject = null;
+    startCallButton.disabled = false;
+    endCallButton.disabled = true;
 });
 
-document.getElementById('forgotPasswordForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Ngừng form gửi đi tự động
-
-    // Lấy giá trị từ form
-    const ID_User = document.getElementById('ID_User').value;
-    const Email = document.getElementById('Email').value;
-    const DienThoai = document.getElementById('DienThoai').value;
-
-    // Gửi dữ liệu đăng ký tới backend
-    const loginData = {
-        ID_User: ID_User,
-        Email: Email,
-        DienThoai: DienThoai,
-    };
-
-    fetch('forgotpass', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' // Đảm bảo rằng dữ liệu được gửi dưới dạng JSON
-        },
-        body: JSON.stringify(loginData) // Chuyển đổi đối tượng JavaScript thành chuỗi JSON
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert('Gửi yêu cầu thành công');
-            window.location.href = "#login"; // Điều hướng sau khi đăng ký thành công
-        })
-        .catch(error => {
-            alert('Lỗi : ' + error);
-        });
+// Nút bật/tắt mic
+toggleMicButton.addEventListener('click', () => {
+    micEnabled = !micEnabled;
+    localStream.getAudioTracks()[0].enabled = micEnabled;
+    toggleMicButton.textContent = micEnabled ? 'Turn Off Mic' : 'Turn On Mic';
 });
-
